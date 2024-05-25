@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "speakerdiarization"
+version = "0.1.0"
+description = ""
+authors = ["BREW <IRACK000@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+jupyter = "^1.0.0"
+diart = "^0.9.0"
+matplotlib = "^3.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
