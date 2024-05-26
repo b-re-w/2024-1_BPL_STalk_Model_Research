@@ -1,3 +1,6 @@
 [submodule "4bitQ/text-generation-webui"]
 	path = 4bitQ/text-generation-webui
 	url = https://github.com/oobabooga/text-generation-webui.git
+[submodule "SpeakerDiarization/whisper_streaming"]
+	path = SpeakerDiarization/whisper_streaming
+	url = https://github.com/ufal/whisper_streaming.git
