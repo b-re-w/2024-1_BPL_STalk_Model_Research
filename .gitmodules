@@ -4,3 +4,6 @@
 [submodule "SpeakerDiarization/whisper_streaming"]
 	path = SpeakerDiarization/whisper_streaming
 	url = https://github.com/ufal/whisper_streaming.git
+[submodule "SpeakerDiarization/WhisperLive"]
+	path = SpeakerDiarization/WhisperLive
+	url = https://github.com/collabora/WhisperLive
