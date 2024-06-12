@@ -77,6 +77,8 @@ if __name__ == '__main__':
                                 print("\nINFO: Getting conversation recommendation...")
                                 get_recommendation()
                                 #Thread(target=get_recommendation).start()
+                                print("\nINFO: Finished conversation recommendation.")
+                                void_count = 0
 
                         del portion, speaker
                         torch.cuda.empty_cache()
