@@ -155,12 +155,6 @@ def get_resnet152():
 llama3 = get_llama3()
 print("INFO: Llama3 Ready -", llama3)
 
-system_prompt = "You are a helpful, smart, kind, and efficient Conversation Analysis and Recommendation AI System. You always fulfill the user's requests to the best of your ability. You need to keep listen to the conversations. Please answer in Korean language."
-
-for chunk in llama3(system_prompt, ""):
-    print(token_stream(chunk), end="", flush=True)
-print()
-
 
 whisper = get_whisper()
 print("INFO: Whisper Ready -", whisper)

@@ -14,14 +14,19 @@ from stalk_streamer import recoder, record_audio, CACHE_FOLDER, OUTPUT_FILENAME
 
 if __name__ == '__main__':
     with Manager() as manager:
-        from stalk_models import ChatHistory, llama3, whisper, audio, resnet152, system_prompt, token_stream
+        from stalk_models import ChatHistory, llama3, whisper, audio, resnet152, token_stream
 
         speaker1 = "민서", "./SpeakerDiarization/sample_conversation/real/sentence_F.wav"
         speaker2 = "연우", "./SpeakerDiarization/sample_conversation/real/sentence_M.wav"
         resnet152.register(*speaker1)
         resnet152.register(*speaker2)
 
+        system_prompt = "You are a helpful, smart, kind, and efficient Conversation Analysis and Recommendation AI System. You always fulfill the user's requests to the best of your ability. You need to keep listen to the conversations. Please answer in Korean language."
         user_prompt = f"Based on the conversations between {speaker1[0]} and {speaker2[0]}, on be half of {speaker2[0]}, do recommend a new topic sentence related the current situation or their personal interests."
+
+        for chunk in llama3(system_prompt, ""):
+            print(token_stream(chunk), end="", flush=True)
+        print()
 
         def get_recommendation():
             for chunk in llama3(system_prompt, user_prompt):
