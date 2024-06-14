@@ -163,10 +163,8 @@ def main(page: ft.Page):
                     if start_offset != crop_range[0]:
                         print()
 
-                    print(
-                        f"\r({crop_range[0]:.f2}, {crop_range[1]:.f2} / {record_params['duration']:.f2})"
-                        f" -> [{speaker['name']}] {segment.text.strip()}", end="", flush=True
-                    )
+                    print(f"\r({crop_range[0]:.2f}, {crop_range[1]:.2f} / {record_params['duration']:.2f})"
+                        f" -> [{speaker['name']}] {segment.text.strip()}", end="", flush=True)
 
                     if start_offset != crop_range[0]:
                         void_count = 0
