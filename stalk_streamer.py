@@ -20,6 +20,12 @@ if not os.path.isdir(CACHE_FOLDER):
     os.mkdir(CACHE_FOLDER)
 
 
+def print_interrupt_message():
+    print("""
+-------------------------------------------
+INFO: Recording interrupted.
+-------------------------------------------""", file=sys.stderr)
+
 def record_audio(params):
     stream = recoder.open(
         format=RECORD_FORMAT, channels=RECORD_CHANNELS,
@@ -47,11 +53,12 @@ INFO: Recording started...
             frame = b"".join(read)
             output_file.writeframes(frame)
             params['duration'] += len(read) / RECORD_RATE * RECORD_CHUNK
+    except BrokenPipeError:
+        pass
     except KeyboardInterrupt:
-        print("""
--------------------------------------------
-INFO: Recording interrupted.
--------------------------------------------""", file=sys.stderr)
+        pass
+
+    print_interrupt_message()
 
     stream.stop_stream()
     stream.close()

@@ -29,12 +29,16 @@ class ChatHistory(list):
     messages = []
 
     @classmethod
+    def remove_last(cls):
+        cls.messages.pop()
+
+    @classmethod
     def add_messages(cls, role, content):
         if isinstance(content, str):
-            cls.messages.append({ 'role': role, 'content': content })
+            cls.messages.append({'role': role, 'content': content})
         else:
             for r, c in zip(role, content):
-                cls.messages.append({ 'role': r, 'content': c })
+                cls.messages.append({'role': r, 'content': c})
 
     @classmethod
     def create_prompt(cls, system_prompt: str, user_prompt: str = ""):
